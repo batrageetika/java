@@ -1,0 +1,96 @@
+import java.util.*;
+class CricketTeam
+{
+  private String firstName = "";
+  private String lastName = "";
+  private int runsGiven = 0;
+  private int overs_bowled = 0;
+  private int number_of_maiden_overs = 0;
+ private int number_of_wicketsTaken = 0;
+
+  String name ()
+  {
+    return firstName.concat (lastName);
+
+  }
+
+  void initialValues ()
+  {
+    Scanner sc = new Scanner (System.in);
+    System.out.println ("Enter the First Name:");
+    firstName = sc.next ();
+    System.out.println ("Enter the Last Name:");
+    lastName = sc.next ();
+    System.out.println ("Enter the runs given:");
+    runsGiven = sc.nextInt ();
+    System.out.println ("Enter the number_of_wicketsTaken:");
+    number_of_wicketsTaken = sc.nextInt ();
+    System.out.println ("Enter the number_of_maiden_overs");
+    number_of_maiden_overs = sc.nextInt ();
+  }
+  void updateInformation ()
+  {
+
+    Scanner sc = new Scanner (System.in);
+    int Update = sc.nextInt ();
+    
+    System.out.println ();
+
+  }
+  void displayInformation ()
+  {
+    System.out.println ("\n First Name:" + firstName + "\n Last Name:" +
+			lastName + "\n Runs given by the batsman:" + runsGiven +
+			"\n Number of wickets taken:" + number_of_wicketsTaken +
+			"\n Number of maien overs:" + number_of_maiden_overs);
+  }
+  public static void main (String[]args)
+  {
+    Scanner sc = new Scanner (System.in);
+    CricketTeam bowlers[] = new CricketTeam[6];
+    int option = 0;
+    int count = 0;
+    do
+      {
+	System.out.println ("\n press 1 for input");
+	System.out.println ("\n press 2 for update information");
+	System.out.println ("\n press 3 for displayInformation");
+	option = sc.nextInt ();
+	if (option == 1)
+	  {
+	    bowlers[count] = new CricketTeam ();
+	    bowlers[count++].initialValues ();
+	  }
+	else if (option == 2)
+	  {
+	    //Scanner sc = new Scanner (System.in);
+	    System.out.println ("Enter the name of the bowler");
+	    String bowlerName = sc.next ();
+	    for (int i = 0; i < count; i++)
+	      {
+		if (bowlerName == bowlers[i].name ())
+		  {
+		    bowlers[i].runsGiven ();
+		  }
+	      }
+	  }
+	else if (option == 3)
+	  {
+	    System.out.println ("Enter the name of the batsman");
+	    //Scanner sc = new Scanner (System.in);
+	    String batsmanName = sc.next ();
+	    for (int i = 0; i < count; i++)
+	      {
+		if (bowlerName.equals (bowlers[i].name ()))
+		  {
+		    bowlers[i].displayInformation ();
+		  }
+	      }
+	  }
+
+
+      }
+    while (option <= 3);
+
+  }
+}
